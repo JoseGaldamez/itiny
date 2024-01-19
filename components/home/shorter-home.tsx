@@ -6,7 +6,7 @@ import { TitleForm } from "../urlform/titleform"
 
 export function ShorterHome() {
   return (
-    <main className="flex flex-col items-center pt-24 py-2 px-4">
+    <main className="flex flex-col items-center pt-24 py-2 px-4 ">
       <TitleForm />
       <UrlForm />
       <History />
