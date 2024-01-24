@@ -16,4 +16,20 @@ export class URLService {
 
         return url;
     }
+    public async getOneByURL(longUrl: string) {
+        const url = await this.provider.tiniesURL.findUnique({
+            where: {
+                url: longUrl,
+            },
+        });
+
+        return url;
+    }
+
+    public async postOne(shorten: string, longUrl: string) {
+        const url = await this.provider.tiniesURL.create({
+            data: { tinied: shorten, url: longUrl },
+        });
+        return url;
+    }
 }
