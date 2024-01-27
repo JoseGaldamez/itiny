@@ -42,13 +42,9 @@ const postUrl = async (request: NextApiRequest, response: NextApiResponse) => {
     if (url) {
         try {
             const result = await controllerURL.postOne(urlShorten, url);
-            response.status(200).json(result);
+            response.status(201).json(result);
         } catch (error) {
             response.status(400).json({ error: "Server Error: " + error });
         }
     }
-
-    response
-        .status(201)
-        .json({ status: "created", ok: true, urlShorten: urlShorten });
 };
