@@ -4,8 +4,19 @@ import { ThemeMode } from "../thememode"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
 import { PersonalInformation } from "./personal-link"
 
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+
 import iTinyLinkDark from '@/public/itiny-ligth.png';
 import iTinyLinkLigth from '@/public/itiny-dark.png';
+import { Button } from "../ui/button";
 
 export function Menu() {
     return (
@@ -16,7 +27,21 @@ export function Menu() {
             </div>
             <menu className="text-gray-900 dark:text-white flex items-center">
                 <span className="mr-5">
-                    About
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <Button variant="outline">About</Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                            <DialogHeader>
+                                <DialogTitle>About</DialogTitle>
+                            </DialogHeader>
+                            <div className="py-4">
+                                <p>
+                                    I was bored a weekend, some people go partying, I build web applications.
+                                </p>
+                            </div>
+                        </DialogContent>
+                    </Dialog>
                 </span>
                 <PersonalInformation />
                 <a href="https://github.com/JoseGaldamez/itiny" target="_blank">
