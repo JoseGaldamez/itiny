@@ -87,6 +87,6 @@ body::before {
   z-index: -1;
 }
 
-.loader-url-searching {
-  background-color: red !important;
+::-webkit-scrollbar {
+  display: none;
 }

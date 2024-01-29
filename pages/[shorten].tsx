@@ -1,32 +1,22 @@
-import { LoaderUrl } from '@/components/loader/loader-url';
+'client use';
+
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
 
 const ShortenLink = () => {
-    const router = useRouter();
-    useEffect(() => {
-
-        if (!router) return;
-
-        if (router.query.shorten) {
-            getUrlLarge(router.query.shorten as string);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [router])
-
     const getUrlLarge = async (shortenUrl: string) => {
-        const result = await fetch("/api/url?urlTinied=" + router.query.shorten);
-        const resultJson = await result.json();
-        if (resultJson && resultJson.url) {
-            router.push(resultJson.url!);
-        } else {
-            router.push('/');
-        }
+        const result = await fetch("/api/url?urlTinied=" + shortenUrl);
+        const newUrl = await result.text();
+        console.log(newUrl);
+
+        window.location.href = newUrl;
     }
 
-    return (
-        <div></div>
-    )
+    if (typeof window !== 'undefined') {
+        const url = window.location;
+        getUrlLarge(url.pathname.replace('/', ''));
+    }
+
+    return <>Redirecting...</>
 }
 
 export default ShortenLink;

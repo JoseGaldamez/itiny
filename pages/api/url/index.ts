@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { URLController } from "@/app/controllers/url.controller";
 import ShortUniqueId from "short-unique-id";
+import { redirect } from "next/navigation";
 
 const controllerURL = new URLController();
 const uid = new ShortUniqueId({ length: 6 });
@@ -28,9 +29,16 @@ const getUrl = async (request: NextApiRequest, response: NextApiResponse) => {
     if (urlTinied) {
         try {
             const result = await controllerURL.getOne(urlTinied);
-            response.status(200).json(result);
+            if (result === null) {
+                response.setHeader("Location", "/").send("/");
+            } else {
+                response
+                    .status(200)
+                    .setHeader("Location", result.url)
+                    .send(result.url);
+            }
         } catch (error) {
-            response.status(400).json({ error: "Server Error: " + error });
+            response.status(500).send({ error: "Server Error: " + error });
         }
     }
 };

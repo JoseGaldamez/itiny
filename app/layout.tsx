@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from '@/providers/theme-provider'
 
 export const metadata: Metadata = {
-  title: 'iTiny',
+  title: 'iTiny Link | Shorten your URLs',
   description: 'Shorten your URLs never was so easy',
 }
 

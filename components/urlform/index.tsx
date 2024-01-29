@@ -23,9 +23,6 @@ export const UrlForm = () => {
     useEffect(() => {
         const list = localStorage.getItem('itiny-list-url');
 
-
-        console.log(list);
-
         if (!list) {
             const listJson: String[] = [];
             localStorage.setItem('itiny-list-url', JSON.stringify(listJson));
@@ -71,7 +68,7 @@ export const UrlForm = () => {
     return (
         <div className="w-full max-w-xl">
             <form onSubmit={handleSubmit} className="flex items-center border-gray-900 dark:border-gray-400 border rounded-md overflow-hidden">
-                <Input onChange={(e) => {
+                <Input required onChange={(e) => {
                     seturl(e.target.value);
                 }} className="bg-transparent border-none text-gray-900 dark:text-white" type="url" placeholder="Paste your large URL..." />
                 <Button className="rounded-none" >Shorten</Button>
@@ -90,13 +87,13 @@ export const UrlForm = () => {
                     <div className='container flex flex-row items-center justify-between bg-slate-700 rounded-lg mt-5 p-2 px-5'>
                         <div>
                             <Link target='_blank' className='text-white font-bold underline flex gap-2' href={shortenUrl.shorten}>
-                                itiny.link/{shortenUrl.shorten}
+                                {window.location.host}/{shortenUrl.shorten}
                                 <ExternalLink />
                             </Link>
                         </div>
                         <div>
                             <Button onClick={() => {
-                                navigator.clipboard.writeText('itiny.link/' + shortenUrl.shorten)
+                                navigator.clipboard.writeText(window.location.host + '/' + shortenUrl.shorten)
                                 toast({
                                     title: "Copied"
                                 })
