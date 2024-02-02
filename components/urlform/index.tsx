@@ -50,9 +50,7 @@ export const UrlForm = () => {
         setLoading(true);
 
         toast({
-            title: "Enviando al backend",
-            slot: "Slot",
-            description: url,
+            title: "Acortando..."
         })
 
         const result = await fetch("/api/url", {
@@ -64,11 +62,12 @@ export const UrlForm = () => {
         setShortenUrl({ url: resultJson.url, shorten: resultJson.tinied })
         handleAddHistory(resultJson.tinied);
         setLoading(false);
+        seturl('');
     }
     return (
         <div className="w-full max-w-xl">
             <form onSubmit={handleSubmit} className="flex items-center border-gray-900 dark:border-gray-400 border rounded-md overflow-hidden">
-                <Input required onChange={(e) => {
+                <Input value={url as string} required onChange={(e) => {
                     seturl(e.target.value);
                 }} className="bg-transparent border-none text-gray-900 dark:text-white" type="url" placeholder="Paste your large URL..." />
                 <Button className="rounded-none" >Shorten</Button>

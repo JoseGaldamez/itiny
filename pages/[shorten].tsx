@@ -1,7 +1,3 @@
-'client use';
-
-import { useRouter } from 'next/router';
-
 const ShortenLink = () => {
     const getUrlLarge = async (shortenUrl: string) => {
         const result = await fetch("/api/url?urlTinied=" + shortenUrl);
