@@ -1,5 +1,4 @@
 import React from 'react'
-import { PersonalInformation } from '../menu/personal-link'
 
 export const Footer = () => {
     return (

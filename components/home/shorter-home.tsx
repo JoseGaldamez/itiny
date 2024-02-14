@@ -1,9 +1,6 @@
-import { Input } from "@/components/ui/input"
-import { Button } from "../ui/button"
 import { UrlForm } from "../urlform"
-import { History } from "../history"
 import { TitleForm } from "../urlform/titleform"
-import { Footer } from "../footer"
+import { Footer } from "../footer/Footer"
 
 export function ShorterHome() {
   return (

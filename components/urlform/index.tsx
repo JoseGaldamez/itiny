@@ -1,15 +1,14 @@
 'use client';
-
 import React, { FormEvent, useEffect, useState } from 'react'
+import { useToast, Input, Button } from "@/components/ui/"
 
-import { useToast } from "@/components/ui/use-toast"
+// Functions
+import { handleAddHistory, sendingURLToTiny, listLocalStorageTinied } from './utils';
 
-import { Input } from '../ui/input'
-import { Button } from '../ui/button'
-import Link from 'next/link';
-import { CopyIcon, ExternalLink, Loader } from 'lucide-react';
-import { History } from '../history';
-import { LoaderUrl } from '../loader/loader-url';
+// Components
+import { History } from '../history/History';
+import { Tinied } from './tinied';
+import { LoadingSpinnerForm } from './loading-spinner-form';
 
 export const UrlForm = () => {
     const { toast } = useToast();
@@ -21,28 +20,8 @@ export const UrlForm = () => {
 
 
     useEffect(() => {
-        const list = localStorage.getItem('itiny-list-url');
-
-        if (!list) {
-            const listJson: String[] = [];
-            localStorage.setItem('itiny-list-url', JSON.stringify(listJson));
-            setListOfUrl(listJson);
-            return;
-        }
-
-        const listJson = JSON.parse(list!) as String[];
-        setListOfUrl(listJson);
-
+        listLocalStorageTinied(setListOfUrl);
     }, []);
-
-    const handleAddHistory = (newURL: String) => {
-
-        if (listOfUrl.includes(newURL)) return;
-
-        const urls: String[] = [...listOfUrl, newURL];
-        localStorage.setItem('itiny-list-url', JSON.stringify(urls));
-        setListOfUrl(urls);
-    }
 
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -50,23 +29,19 @@ export const UrlForm = () => {
         setLoading(true);
 
         toast({
-            title: "Acortando..."
-        })
-
-        const result = await fetch("/api/url", {
-            method: "POST",
-            body: JSON.stringify({ "url": url })
+            title: "Acortando...",
         });
-        const resultJson = await result.json();
+
+        const resultJson = await sendingURLToTiny(url);
 
         setShortenUrl({ url: resultJson.url, shorten: resultJson.tinied })
-        handleAddHistory(resultJson.tinied);
+        handleAddHistory(resultJson.tinied, listOfUrl, setListOfUrl);
         setLoading(false);
         seturl('');
     }
     return (
         <div className="w-full max-w-xl">
-            <form onSubmit={handleSubmit} className="flex items-center border-gray-900 dark:border-gray-400 border rounded-md overflow-hidden">
+            <form name='form-url-shorter' id='form-url-shorter' onSubmit={handleSubmit} className="flex items-center border-gray-900 dark:border-gray-400 border rounded-md overflow-hidden">
                 <Input value={url as string} required onChange={(e) => {
                     seturl(e.target.value);
                 }} className="bg-transparent border-none text-gray-900 dark:text-white" type="url" placeholder="Paste your large URL..." />
@@ -75,35 +50,17 @@ export const UrlForm = () => {
 
             {
                 loading && (
-                    <div className='container flex flex-row items-center justify-center bg-slate-700 rounded-lg mt-5 p-5 px-5'>
-                        <Loader size={32} strokeWidth={2.5} color='white' className='animate-spin' />
-                    </div>
+                    <LoadingSpinnerForm />
                 )
             }
 
             {
                 (shortenUrl && !loading) && (
-                    <div className='container flex flex-row items-center justify-between bg-slate-700 rounded-lg mt-5 p-2 px-5'>
-                        <div>
-                            <Link target='_blank' className='text-white font-bold underline flex gap-2' href={shortenUrl.shorten}>
-                                {window.location.host}/{shortenUrl.shorten}
-                                <ExternalLink />
-                            </Link>
-                        </div>
-                        <div>
-                            <Button onClick={() => {
-                                navigator.clipboard.writeText(window.location.host + '/' + shortenUrl.shorten)
-                                toast({
-                                    title: "Copied"
-                                })
-                            }} className='flex gap-3'> <CopyIcon /> Copy</Button>
-                        </div>
-                    </div>
+                    <Tinied shortenUrl={shortenUrl} toast={toast} />
                 )
             }
 
             <History listOfUrls={listOfUrl} toast={toast} />
-
         </div>
     )
 }

@@ -5,7 +5,7 @@ import { Button } from '../ui/button'
 
 interface IhistoryProps {
     listOfUrls: String[]
-    toast: any
+    toast: Function
 }
 
 export const History = ({ listOfUrls, toast }: IhistoryProps) => {
@@ -13,7 +13,7 @@ export const History = ({ listOfUrls, toast }: IhistoryProps) => {
     return (
         <div className="w-full max-w-xl mt-20 border-t-2 pt-4">
             <h2 className="text-xl font-medium text-gray-900 dark:text-gray-100 mb-4">History</h2>
-            <div className='h-64 overflow-y-scroll bar'>
+            <div className='h-64 overflow-y-scroll bar' data-testid='list-of-storage-urls'>
                 {
                     listOfUrls.map((item) => (
                         <div key={item as Key} className="space-y-2 mt-2">
