@@ -16,6 +16,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta property="og:title" content="iTiny Link | Shorten your URLs" />
+        <meta property="og:description" content="Shorten your URLs never was so easy" />
+        <meta property="og:image" content="./itiny-back.jpg" />
+
+        <link rel="preload" as="image" href="./itiny-back.jpg"></link>
+
+        <meta property="image" content="./itiny-back.jpg" />
+
+        <meta name="twitter:title" content="iTiny Link | Shorten your URLs" />
+        <meta name="twitter:description" content="Shorten your URLs never was so easy" />
+        <meta name="twitter:image" content="./itiny-back.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </head>
       <body>
         <ThemeProvider
           attribute="class"

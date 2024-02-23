@@ -29,7 +29,7 @@ export const UrlForm = () => {
         setLoading(true);
 
         toast({
-            title: "Acortando...",
+            title: "Shortening URL",
         });
 
         const resultJson = await sendingURLToTiny(url);
