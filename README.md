@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Logo](https://itiny.link/favicon.ico)
 
-## Getting Started
+# iTiny.Link
 
-First, run the development server:
+Make your links the shortest
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This is a personal project of [JoseGaldamez.dev](https://josegaldamez.dev/). I was bored a weekend, some people go partying, I build web applications.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![App Screenshot](https://josegaldamez.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fitiny-link.1e0edf33.png&w=750&q=75)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tech Stack
 
-## Learn More
+**Client:** NextJS, TailwindCSS
 
-To learn more about Next.js, take a look at the following resources:
+**Server:** Node, Express, PostgreSQL
 
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔗 Links
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://josegaldamez.dev/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/josegaldamezdev/)
+[![Youtube](https://img.shields.io/badge/youtube-c4302b?style=for-the-badge&logo=youtube&logoColor=white)](https://twitter.com/)
 
-## Deploy on Vercel
+## Authors
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-   [@JoseGaldamez](https://github.com/JoseGaldamez)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+s
