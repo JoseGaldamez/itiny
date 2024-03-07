@@ -27,6 +27,9 @@ export const handleAddHistory = (
 export const sendingURLToTiny = async (url: String) => {
     const result = await fetch("/api/url", {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({ url: url }),
     });
     const resultJson = await result.json();

@@ -18,7 +18,7 @@ export default async function handler(
             await postUrl(request, response);
             break;
         default:
-            response.status(400).json({ error: "Invalid Param" });
+            response.status(405).json({ error: "Invalid Method" });
             break;
     }
 }
@@ -45,7 +45,7 @@ const getUrl = async (request: NextApiRequest, response: NextApiResponse) => {
 
 const postUrl = async (request: NextApiRequest, response: NextApiResponse) => {
     const urlShorten = uid.rnd();
-    const { url } = await JSON.parse(request.body);
+    const { url } = request.body;
 
     if (url) {
         try {
