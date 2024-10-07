@@ -22,7 +22,7 @@ export const AboutMenu = () => {
                     </DialogHeader>
                     <div className="py-4">
                         <p>
-                            I was bored a weekend, some people go partying, I build web applications.
+                            I was bored a weekend, some people go partying, but I build web applications on my free time.
                         </p>
                     </div>
                 </DialogContent>

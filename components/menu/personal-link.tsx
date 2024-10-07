@@ -23,7 +23,7 @@ export function PersonalInformation() {
             <HoverCardContent className="w-80">
                 <div className="flex justify-between space-x-4">
                     <Avatar>
-                        <AvatarImage src="https://media.licdn.com/dms/image/C4E03AQHh2LZaUWerUw/profile-displayphoto-shrink_200_200/0/1645231074838?e=1710979200&v=beta&t=NBKwIfQKr7eXtKFfrA55luMzzCXbdSzeGQEinIO4yTQ" />
+                        <AvatarImage src="https://github.com/JoseGaldamez.png" />
                         <AvatarFallback>José Galdámez</AvatarFallback>
                     </Avatar>
                     <div className="space-y-1">
@@ -42,8 +42,8 @@ export function PersonalInformation() {
                             <a href="https://www.youtube.com/codigocorrecto" className="flex items-center" target="_blank">
                                 <YoutubeIcon className="mr-2 h-6 w-6 opacity-70" /> <span>YouTube</span>
                             </a>
-                            <a href="https://www.josegaldamez.online/" className="flex items-center" target="_blank">
-                                <img src="https://www.josegaldamez.online/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-jg.fa4f1769.png&w=48&q=75" alt="José Galdámez Web Site" className="mr-2 h-6 w-6 opacity-70" /> <span>Website</span>
+                            <a href="https://josegaldamez.dev/" className="flex items-center" target="_blank">
+                                <img src="https://github.com/JoseGaldamez.png" alt="José Galdámez Web Site" className="mr-2 h-6 w-6 opacity-70 rounded-full" /> <span>Website</span>
                             </a>
                         </div>
 
