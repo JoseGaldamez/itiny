@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { URLController } from "@/app/controllers/url.controller";
 import ShortUniqueId from "short-unique-id";
-import { redirect } from "next/navigation";
 
 const controllerURL = new URLController();
 const uid = new ShortUniqueId({ length: 6 });
@@ -22,6 +21,14 @@ export default async function handler(
             break;
     }
 }
+
+export const getURLFromAction = async (shorten: string) => {
+    try {
+        return await controllerURL.getOne(shorten);
+    } catch (error) {
+        return null;
+    }
+};
 
 const getUrl = async (request: NextApiRequest, response: NextApiResponse) => {
     const urlTinied = request.query["urlTinied"] as string;

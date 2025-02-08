@@ -42,9 +42,12 @@ export const UrlForm = () => {
     return (
         <div className="w-full max-w-xl">
             <form name='form-url-shorter' id='form-url-shorter' onSubmit={handleSubmit} className="flex items-center border-gray-900 dark:border-gray-400 border rounded-md overflow-hidden">
-                <Input value={url as string} required onChange={(e) => {
-                    seturl(e.target.value);
-                }} className="bg-transparent border-none text-gray-900 dark:text-white" type="url" placeholder="Paste your large URL..." />
+                <Input
+                    value={url as string}
+                    required onChange={(e) => {
+                        seturl(e.target.value);
+                    }} className="bg-transparent border-none text-gray-900 dark:text-white"
+                    type="url" placeholder="Paste your large URL..." />
                 <Button className="rounded-none" >Shorten</Button>
             </form>
 
